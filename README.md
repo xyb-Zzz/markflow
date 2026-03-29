@@ -1,64 +1,81 @@
 # MarkFlow
 
-A minimalist Markdown editor with a macOS-native aesthetic. Built for writers and knowledge workers who value distraction-free writing with structural clarity.
+一款具有原生 macOS 风格的极简 Markdown 编辑器。为追求无干扰写作体验和结构化文档管理的写作者和知识工作者打造。
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![版本](https://img.shields.io/badge/version-0.1.1-blue)
+![许可证](https://img.shields.io/badge/license-MIT-green)
 
-## Features
+## 功能特点
 
-- **Split View** — Edit and preview side-by-side with adjustable ratios (20%-80%)
-- **Markdown Syntax Highlighting** — Powered by CodeMirror 6
-- **Scroll Sync** — Editor and preview scroll in sync
-- **File Tree** — Organize documents in folders, stored locally in IndexedDB
-- **Outline Navigation** — Auto-generated heading structure for quick navigation
-- **Theme Support** — Light/dark mode following system preference
-- **Export** — Export as standalone HTML or PDF
+- **分屏视图** — 编辑器和预览区并排显示，比例可调（20%-80%）
+- **Markdown 语法高亮** — 基于 CodeMirror 6 实现
+- **滚动同步** — 编辑器和预览区滚动联动
+- **文件树** — 使用 IndexedDB 本地存储，支持文件夹组织文档
+- **主题支持** — 浅色/深色模式，跟随系统偏好或手动切换
 
-## Tech Stack
+## 技术栈
 
-- **Framework**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Editor**: CodeMirror 6
-- **Markdown Parser**: markdown-it
-- **Styling**: Pure CSS with CSS Variables
+- **框架**: React 18 + TypeScript
+- **构建工具**: Vite
+- **编辑器**: CodeMirror 6
+- **Markdown 解析**: markdown-it
+- **样式**: 纯 CSS + CSS 变量
 
-## Getting Started
+## 快速开始
 
 ```bash
-# Install dependencies
+# 安装依赖
 npm install
 
-# Start development server
+# 启动开发服务器
 npm run dev
 
-# Build for production
+# 生产环境构建
 npm run build
 ```
 
-## Keyboard Shortcuts
+## 快捷键
 
-| Shortcut | Action |
-|----------|--------|
-| `Cmd/Ctrl + S` | Save |
-| `Cmd/Ctrl + B` | Toggle bold |
-| `Cmd/Ctrl + I` | Toggle italic |
-| `Cmd/Ctrl + F` | Find/Replace |
-| `Cmd/Ctrl + K` | Insert link |
-| `Cmd/Ctrl + Shift + K` | Insert code block |
-| `Cmd/Ctrl + B` | Toggle sidebar |
-| `Cmd/Ctrl + Shift + O` | Toggle outline |
+| 快捷键 | 功能 |
+|--------|------|
+| `Cmd/Ctrl + S` | 保存 |
+| `Cmd/Ctrl + B` | 加粗 |
+| `Cmd/Ctrl + I` | 斜体 |
+| `Cmd/Ctrl + F` | 查找/替换 |
+| `Cmd/Ctrl + K` | 插入链接 |
+| `Cmd/Ctrl + Shift + K` | 插入代码块 |
+| `Cmd/Ctrl + B` | 切换侧边栏 |
 
-## Project Structure
+## 项目结构
 
 ```
 src/
-├── components/     # React components
-├── hooks/          # Custom React hooks
-├── styles/         # Global CSS
-└── main.tsx        # Entry point
+├── components/     # React 组件
+├── hooks/          # 自定义 React Hooks
+├── stores/         # IndexedDB 数据存储层
+├── styles/         # 全局 CSS 样式
+└── main.tsx        # 入口文件
 ```
 
-## License
+## 版本更新历史
+
+### v0.1.1 (2026-03-29)
+- 新增 IndexedDB 存储层
+  - 实现文件 CRUD 操作
+  - 实现文件夹 CRUD 操作（含递归删除）
+  - 实现设置持久化存储
+  - 新增 `stores` 模块，统一数据管理接口
+- README 翻译为中文
+
+### v0.1.0 (2026-03-29)
+- 初始版本
+- 分屏编辑/预览布局
+- CodeMirror 6 编辑器集成
+- markdown-it 渲染支持
+- 浅色/深色主题切换
+- 滚动同步功能
+- 工具栏格式化按钮
+
+## 许可证
 
 MIT

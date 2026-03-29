@@ -12,6 +12,7 @@ import {
   Sun,
   Moon,
   Monitor,
+  Sidebar,
 } from 'lucide-react'
 
 type ViewMode = 'split' | 'edit' | 'preview'
@@ -23,6 +24,8 @@ interface ToolbarProps {
   theme: Theme
   onThemeChange: (theme: Theme) => void
   onInsert: (before: string, after: string, placeholder: string) => void
+  sidebarOpen: boolean
+  onSidebarToggle: () => void
 }
 
 interface TooltipState {
@@ -38,6 +41,8 @@ export function Toolbar({
   theme,
   onThemeChange,
   onInsert,
+  sidebarOpen,
+  onSidebarToggle,
 }: ToolbarProps) {
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, text: '', x: 0, y: 0 })
   const tooltipTimeoutRef = useRef<number | null>(null)
@@ -115,6 +120,43 @@ export function Toolbar({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <button
+            onClick={onSidebarToggle}
+            onMouseEnter={e => showTooltip('Toggle Sidebar (Cmd+B)', e)}
+            onMouseLeave={hideTooltip}
+            aria-label="Toggle Sidebar"
+            style={{
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: sidebarOpen ? 'var(--accent)' : 'transparent',
+              border: 'none',
+              borderRadius: '6px',
+              color: sidebarOpen ? '#fff' : 'var(--text-secondary)',
+              cursor: 'pointer',
+              transition: 'background 150ms, color 150ms',
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.background = sidebarOpen ? 'var(--accent-hover)' : 'var(--bg-secondary)'
+              e.currentTarget.style.color = sidebarOpen ? '#fff' : 'var(--text-primary)'
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.background = sidebarOpen ? 'var(--accent)' : 'transparent'
+              e.currentTarget.style.color = sidebarOpen ? '#fff' : 'var(--text-secondary)'
+            }}
+          >
+            <Sidebar size={18} />
+          </button>
+          <div
+            style={{
+              width: '1px',
+              height: '20px',
+              background: 'var(--border-color)',
+              margin: '0 4px',
+            }}
+          />
           {buttons.map(({ icon: Icon, action, tooltip: btnTooltip, label }) => (
             <button
               key={label}
